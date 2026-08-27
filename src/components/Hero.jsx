@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const containerRef = useRef(null);
+  const imageRef = useRef(null); // DIRECT DOM REFERENCE FOR SPEED
   const [loaded, setLoaded] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [currentFrameIdx, setCurrentFrameIdx] = useState(0);
@@ -21,6 +22,7 @@ export default function Hero() {
     let loadedCount = 0;
     for (let i = 0; i < frameCount; i++) {
         const img = new Image();
+        img.decoding = "async"; // PERFORMANCE BOOST
         img.src = currentFrame(i);
         img.onload = () => {
             loadedCount++;
@@ -50,18 +52,24 @@ export default function Hero() {
         snap: "frame", 
         duration: 1, 
         ease: "power1.inOut", 
-        onUpdate: () => setCurrentFrameIdx(Math.round(seqRef.current.frame)) 
+        onUpdate: () => {
+            let idx = Math.round(seqRef.current.frame);
+            if (imageRef.current && imagesRef.current[idx]) {
+                imageRef.current.src = imagesRef.current[idx].src; // DIRECT UPDATE
+            }
+            setCurrentFrameIdx(idx);
+        }
     }, 0.4);
 
     bootTl.fromTo('.hud-element', { opacity: 0 }, { opacity: 1, duration: 0.1, stagger: 0.1, ease: "none" }, 0.8);
 
-    // --- MAIN SCROLL CONTINUATION (192 Frames Razor-Sharp Sync) ---
+    // --- MAIN SCROLL CONTINUATION (Razor-Sharp Sync) ---
     const tlScroll = gsap.timeline({
         scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
             end: "+=5000",
-            scrub: 0.1, // Super fast responsive scrub
+            scrub: 1.2, // Smoother glide on scroll
             pin: true,
             anticipatePin: 1
         }
@@ -75,7 +83,14 @@ export default function Hero() {
         onUpdate: () => {
             let frameIdx = Math.round(seqRef.current.frame);
             if (frameIdx >= frameCount) frameIdx = frameCount - 1;
-            setCurrentFrameIdx(frameIdx);
+            
+            // 1. Direct Image Update (Bypasses React Render - Ultra Fast)
+            if (imageRef.current && imagesRef.current[frameIdx]) {
+                imageRef.current.src = imagesRef.current[frameIdx].src;
+            }
+            
+            // 2. Only update state if the number actually changes (avoids 60fps re-renders)
+            setCurrentFrameIdx((prev) => prev !== frameIdx ? frameIdx : prev);
         }
     });
 
@@ -110,11 +125,12 @@ export default function Hero() {
         <div className="portfolio-ui noise-overlay absolute inset-0 z-0 pointer-events-none mix-blend-overlay opacity-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
         <div className="portfolio-ui center-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none opacity-0 mix-blend-screen z-[1]"></div>
 
-        {/* --- ULTRA-SHARP DIRECT IMAGE LAYER (No Canvas Blur) --- */}
+        {/* --- ULTRA-SHARP DIRECT IMAGE LAYER --- */}
         {loaded && (
             <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-[#020202]">
                 <img 
-                    src={currentFrame(currentFrameIdx)} 
+                    ref={imageRef} // <-- YEH REFERENCE BOHT ZAROORI THI
+                    src={currentFrame(0)} // Initial frame
                     alt="Ahsan Iqbal Hero" 
                     className="w-full h-full object-cover select-none"
                     style={{ imageRendering: 'high-quality' }}

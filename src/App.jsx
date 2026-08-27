@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
+import Lenis from 'lenis';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 
@@ -11,6 +12,30 @@ const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
+  
+  // --- LENIS ULTRA-SMOOTH SCROLL SETUP ---
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2, // Scroll ki speed aur smoothness (1.2 best hai)
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium curve
+      smoothWheel: true,
+      touchMultiplier: 2, // Touchpad/Mobile par thora fast response
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    
+    requestAnimationFrame(raf);
+
+    // Cleanup function taake memory leak na ho
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+  // ---------------------------------------
+
   return (
     <>
       <Navbar />
