@@ -83,7 +83,7 @@ const Footer = () => {
                 <FiCpu className="text-cyan-500 text-xl group-hover:text-white transition-colors" />
               </div>
               <h3 className="text-2xl font-black text-white tracking-tighter uppercase italic">
-                LEESH<span className="text-cyan-600">ARK</span>
+                AHS<span className="text-cyan-600">AN</span>
               </h3>
             </div>
             <p className="text-gray-500 text-xs leading-relaxed uppercase tracking-widest font-light">
@@ -199,10 +199,10 @@ const Footer = () => {
 
           <div className="flex flex-col items-center md:items-end">
              <div className="text-[10px] text-gray-500 tracking-[0.4em] font-mono uppercase mb-1">
-                Local_Time: {systemTime}
+               Local_Time: {systemTime}
              </div>
              <p className="text-[9px] text-gray-700 tracking-[0.2em] font-mono uppercase">
-                &copy; LEESHARK. ALL NEURAL LINKS RESERVED.
+                &copy; AHSAN IQBAL. ALL NEURAL LINKS RESERVED.
              </p>
           </div>
         </div>

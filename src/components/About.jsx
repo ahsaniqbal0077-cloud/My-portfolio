@@ -3,36 +3,36 @@ import { FiAward, FiBookOpen, FiCode, FiDownload } from "react-icons/fi";
 import { 
   SiReact, 
   SiTailwindcss, 
-  SiMongodb, 
-  SiFastapi, 
-  SiGit 
+  SiCplusplus, 
+  SiFigma, 
+  SiMysql 
 } from "react-icons/si";
 
 export default function About() {
   const Aboutdata = [
     {
       icon: <FiCode size={20} />,
-      title: "Languages",
-      desc: "HTML, CSS, JS, React, FastAPI, MongoDB",
+      title: "Skills",
+      desc: "C++, SQL, Assembly (8051), HTML, CSS",
     },
     {
       icon: <FiBookOpen size={20} />,
       title: "Education",
-      desc: "B.E Computer Science",
+      desc: "BS Software Engineering (MAJU)",
     },
     {
       icon: <FiAward size={20} />,
-      title: "Projects",
-      desc: "Built 5+ modern web projects",
+      title: "Focus Areas",
+      desc: "UI/UX, System Arch & Networking",
     },
   ];
 
   const Tools = [
+    { icon: <SiCplusplus size={24} />, title: "C++" },
+    { icon: <SiMysql size={24} />, title: "SQL" },
+    { icon: <SiFigma size={24} />, title: "Figma" },
     { icon: <SiReact size={24} />, title: "React js" },
     { icon: <SiTailwindcss size={24} />, title: "Tailwind css" },
-    { icon: <SiMongodb size={24} />, title: "MongoDB" },
-    { icon: <SiFastapi size={24} />, title: "FastAPI" },
-    { icon: <SiGit size={24} />, title: "Git" },
   ];
 
   return (
@@ -45,7 +45,7 @@ export default function About() {
         {/* --- STATIC FRAME IMAGE (LEFT 45%) --- */}
         <div className="absolute inset-y-0 left-0 w-[45%] z-10 pointer-events-none overflow-hidden hidden lg:block" style={{ WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)', maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)' }}>
             <img 
-               src="/images/ezgif-frame-240.jpg" 
+               src="/images/ezgif-frame-192.jpg" 
                alt="About Profile" 
                className="w-full h-full object-cover opacity-50 grayscale" 
             />
@@ -70,9 +70,7 @@ export default function About() {
                 {/* Bio Paragraph */}
                 <div className="robotic-section">
                     <p className="text-gray-400 text-sm md:text-md lg:text-xl font-light leading-relaxed max-w-2xl">
-                        I am a passionate <span className="text-white font-medium">Full Stack Web Developer</span> specializing in the 
-                        modern web ecosystem. My expertise lies in crafting high-performance, 
-                        scalable applications with precision and clean architecture.
+                        I am a passionate <span className="text-white font-medium">Software Engineer</span> bridging the gap between high-performance system architecture and user-centered design. My expertise ranges from C++ backend logic and complex network routing to crafting clean interfaces using Figma.
                     </p>
                 </div>
 
@@ -110,6 +108,7 @@ export default function About() {
                 <div className="pt-6">
                     <a 
                         href="/resume.pdf" 
+                        download="Ahsan_Iqbal_Resume.pdf"
                         className="inline-flex items-center space-x-6 px-12 py-4 bg-blue-600 text-white font-bold text-xs uppercase tracking-widest hover:bg-blue-700 transition-all duration-300 rounded-full shadow-lg shadow-blue-900/20"
                     >
                         <span>Download Resume</span>

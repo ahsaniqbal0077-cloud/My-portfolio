@@ -4,23 +4,26 @@ import { motion } from "framer-motion";
 
 const projectData = [
   {
-    image: "https://images.unsplash.com/photo-1587620498306-444737c15555?auto=format&fit=crop&q=80&w=800",
-    title: "Real-time Chat App",
-    tags: ["React", "FastAPI", "MongoDB", "Socket.io"],
+    // Tech/AI background image
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800",
+    title: "Ultron AI Assistant",
+    tags: ["Python", "AI", "Node.js", "API Setup"],
     link: "#",
     github: "#",
   },
   {
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800",
-    title: "Food Delivery Platform",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
+    // Server/Networking background image
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800",
+    title: "Distributed Cache",
+    tags: ["C++", "Networking", "System Arch", "TCP/IP"],
     link: "#",
     github: "#",
   },
   {
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
-    title: "Premium E-Commerce",
-    tags: ["React", "Node.js", "Tailwind", "Stripe"],
+    // UI/UX Design background image
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
+    title: "University Redesign",
+    tags: ["Figma", "UI/UX", "Wireframing"],
     link: "#",
     github: "#",
   },
