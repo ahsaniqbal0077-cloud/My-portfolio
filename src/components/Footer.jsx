@@ -32,10 +32,10 @@ const Footer = () => {
   }, []);
 
   const socialLinks = [
-    { icon: <FiGithub />, label: 'GITHUB', url: '#', color: 'hover:text-red-500' },
-    { icon: <FiTwitter />, label: 'TWITTER', url: '#', color: 'hover:text-cyan-400' },
-    { icon: <FiLinkedin />, label: 'LINKEDIN', url: '#', color: 'hover:text-blue-500' },
-    { icon: <FiInstagram />, label: 'INSTAGRAM', url: '#', color: 'hover:text-violet-500' },
+    { icon: <FiGithub />, label: 'GITHUB', url: 'https://github.com/ahsaniqbal0077-cloud', color: 'hover:text-red-500' },
+    { icon: <FiTwitter />, label: 'TWITTER', url: 'https://twitter.com/YourName', color: 'hover:text-cyan-400' },
+    { icon: <FiLinkedin />, label: 'LINKEDIN', url: 'https://linkedin.com/in/ahsan-iqbal-7610ba248', color: 'hover:text-blue-500' },
+    { icon: <FiInstagram />, label: 'INSTAGRAM', url: 'https://instagram.com/ahsann24', color: 'hover:text-violet-500' },
   ];
 
   return (

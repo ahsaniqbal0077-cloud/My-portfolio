@@ -9,15 +9,15 @@ const projectData = [
     title: "Ultron AI Assistant",
     tags: ["Python", "AI", "Node.js", "API Setup"],
     link: "#",
-    github: "#",
+    github: "https://github.com/ahsaniqbal0077-cloud/Ultron-Core",
   },
   {
     // Server/Networking background image
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800",
-    title: "Distributed Cache",
+    title: "Distributed Cache System",
     tags: ["C++", "Networking", "System Arch", "TCP/IP"],
     link: "#",
-    github: "#",
+    github: "https://github.com/ahsaniqbal0077-cloud/MiniDistributedCache",
   },
   {
     // UI/UX Design background image
